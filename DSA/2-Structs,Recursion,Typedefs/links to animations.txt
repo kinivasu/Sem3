@@ -1,0 +1,13 @@
+Link to visualize recursive function execution:
+
+http://www.pythontutor.com/visualize.html#mode=edit
+
+Steps:
+Change the code to C(gcc 4.8, C11) 
+type the recursive program to visualize 
+Click visualize Execution
+
+
+Link to Visualize Tower of Hanoi
+
+http://www.algomation.com/algorithm/towers-hanoi-recursive-visualization

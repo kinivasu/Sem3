@@ -17,6 +17,7 @@ public class ArrayOfStrings {
         // for (String s : strs)
         // System.out.print(s + " ");
 
+        // * Length of each string
         System.out.println("Rows: " + strs.length);
         for (int i = 0; i < strs.length; i++) {
             System.out.println(strs[i].length());

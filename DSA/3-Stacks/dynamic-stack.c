@@ -17,6 +17,7 @@ void StackFull()
     Stack = realloc(Stack, 2 * capacity * sizeof(element));
     capacity *= 2;
 }
+
 void Push(element x)
 {
     if (top >= capacity - 1)

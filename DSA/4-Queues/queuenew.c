@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX 20
+#define MAX 5
 
 typedef struct
 {
@@ -16,7 +16,7 @@ void insertq(queue *q, int x)
 {
     if (q->rear == MAX)
     {
-        printf("\nOverflow\n");
+        printf("\n\tOverflow\n");
     }
     else
     {
@@ -33,7 +33,7 @@ int deleteq(queue *q)
     int x;
     if (q->front == -1)
     {
-        printf("\nUnderflow!!!\n");
+        printf("\n\tUnderflow!!!\n");
     }
     else if (q->front == q->rear)
     {

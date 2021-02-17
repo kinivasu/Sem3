@@ -3,6 +3,7 @@
 #include <ctype.h>
 
 #define MaxSize 100
+
 typedef struct
 {
     char stack[MaxSize];

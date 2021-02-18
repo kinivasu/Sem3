@@ -5,8 +5,9 @@
 
 # Static input of the 
 # number 
-Num=123 
-g=$Num 
+echo -n "Enter a number:  "
+read Num
+copy=$Num 
 
 # store the sum of 
 # digits 
@@ -18,13 +19,13 @@ s=0
 while [ $Num -gt 0 ] 
 do
 	# get Remainder 
-	k=$(( $Num % 10 )) 
+	k=$(($Num%10)) 
 
 	# get next digit 
-	Num=$(( $Num / 10 )) 
+	Num=$(($Num/10)) 
 
 	# calculate sum of 
 	# digit 
 	s=$(( $s + $k )) 
 done
-echo "sum of digits of $g is : $s"
+echo "sum of digits of $copy is : $s"

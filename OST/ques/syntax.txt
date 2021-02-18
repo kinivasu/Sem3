@@ -1,0 +1,55 @@
+if [ expression ]
+then
+   statement
+fi
+
+
+--------------------------------------
+if [ expression ]
+then
+   statement1
+else
+   statement2
+fi
+
+----------------------------------------
+
+if [ expression1 ]
+then
+   statement1
+   statement2
+   .
+   .
+elif [ expression2 ]
+then
+   statement3
+   statement4
+   .
+   .
+else
+   statement5
+fi
+
+-------------------------------------
+
+case  in
+   Pattern 1) Statement 1;;
+   Pattern n) Statement n;;
+esac
+
+-----------------------
+CARS="bmw"
+  
+#Pass the variable in string 
+case "$CARS" in 
+    #case 1 
+    "mercedes") echo "Headquarters - Affalterbach, Germany" ;; 
+      
+    #case 2 
+    "audi") echo "Headquarters - Ingolstadt, Germany" ;; 
+      
+    #case 3 
+    "bmw") echo "Headquarters - Chennai, Tamil Nadu, India" ;; 
+esac 
+
+-------------------------------------------

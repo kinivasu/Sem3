@@ -21,10 +21,10 @@ class Matrix {
     }
 
     public void input() {
-        for (int i = 0; i < a[i].length; i++) {
+        for (int i = 0; i < a.length; i++) {
             System.out.println("Enter reg number for student " + (i + 1) + " :");
             int r = sc.nextInt();
-            for (int j = 0; j < a.length; j++) {
+            for (int j = 0; j < a[i].length; j++) {
                 System.out.println("Enter CGPA for year " + (j + 1));
                 double cg = sc.nextDouble();
                 a[j][i] = new UGStudent(r, cg);
@@ -34,13 +34,14 @@ class Matrix {
 
     public UGStudent[] getRow(int i) {
         return a[i];
+
     }
 
     public void display() {
-        for (int i = 0; i < a[i].length; i++) {
+        for (int i = 0; i < a.length; i++) {
             int j = 0;
             System.out.println("Details for student with registration number : " + a[j][i].reg);
-            for (j = 0; j < a.length; j++)
+            for (j = 0; j < a[i].length; j++)
                 System.out.print(a[j][i].cgpa + " ");
             System.out.println();
         }
@@ -88,6 +89,7 @@ public class Cgpacompute {
         System.out.println("Enter number of students and year : ");
         int c = sc.nextInt();
         int r = sc.nextInt();
+
         Matrix mat = new Matrix(r, c);
         mat.input();
         mat.display();
@@ -107,7 +109,7 @@ public class Cgpacompute {
                 System.out.println("The Average CGPA for year " + (i + 1) + " : " + r1[i].getRowAvg());
             }
         } catch (InterruptedException | TooLowAvgCgpaException exc) {
-            System.out.println(exc);
+            System.out.println("Exception Occured:  " + exc);
             check = -1;
         }
         if (check == 0) {

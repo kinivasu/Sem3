@@ -49,14 +49,6 @@ class Stack<T> {
 			throw new PopException("Stack is Empty");
 		return (this.item[this.top--]);
 	}
-
-	// public void display(){
-	// if(this.isEmpty())
-	// return;
-	// for(int i = 0; i < this.top + 1; i++)
-	// System.out.print(this.item[i]+" ");
-	// System.out.println("");
-	// }
 }
 
 class Student {

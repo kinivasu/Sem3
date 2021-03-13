@@ -4,17 +4,17 @@
 //self referential structure
 typedef struct node *Nodeptr;
 
-struct node
+typedef struct node
 {
     int data;
     Nodeptr next;
-};
+} Node;
 
 Nodeptr getnode()
 {
     Nodeptr temp;
 
-    temp = (Nodeptr)malloc(sizeof(struct node));
+    temp = (Nodeptr)malloc(sizeof(Node));
     if (temp == NULL)
     {
         printf("No Memory Space");

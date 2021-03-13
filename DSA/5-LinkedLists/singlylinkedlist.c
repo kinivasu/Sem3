@@ -4,32 +4,35 @@
 //self referential structure
 typedef struct node *Nodeptr;
 
-struct node{
+struct node
+{
     int data;
     Nodeptr next;
 };
 
-Nodeptr getnode(){
+Nodeptr getnode()
+{
     Nodeptr temp;
 
-    temp = (Nodeptr) malloc(sizeof(struct node));
-    if (temp==NULL){
+    temp = (Nodeptr)malloc(sizeof(struct node));
+    if (temp == NULL)
+    {
 
         printf("No Memory Space");
         exit(0);
     }
     return temp;
-
 }
 
-Nodeptr InsertFront(Nodeptr first, int x){
+Nodeptr InsertFront(Nodeptr first, int x)
+{
     Nodeptr temp;
 
-    temp= getnode();
+    temp = getnode();
     temp->data = x;
     temp->next = NULL;
 
-    if (first == NULL)//list is empty
+    if (first == NULL) //list is empty
         first = temp;
 
     else
@@ -40,85 +43,96 @@ Nodeptr InsertFront(Nodeptr first, int x){
     return first;
 }
 
-void Display(Nodeptr first){
-    Nodeptr temp=getnode();
+void Display(Nodeptr first)
+{
+    Nodeptr temp = getnode();
 
-    temp=first;
+    temp = first;
     printf("\nContents of List : \n");
-    while(temp){
-        printf("%d\n",temp->data);
+    while (temp)
+    {
+        printf("%d\n", temp->data);
         temp = temp->next;
     }
 }
 
-void InsertLast(Nodeptr *first, int x){
+void InsertLast(Nodeptr *first, int x)
+{
     Nodeptr temp, rear;
 
-    temp= getnode();
+    temp = getnode();
     temp->data = x;
     temp->next = NULL;
 
-    if (*first==NULL){
-        *first =temp;
+    if (*first == NULL)
+    {
+        *first = temp;
     }
-    else{
+    else
+    {
         rear = *first;
-        while(rear->next)
+        while (rear->next)
             rear = rear->next;
         rear->next = temp;
     }
     //return first;
 }
 
-Nodeptr InsertAfter(Nodeptr first, int x, int y){
+Nodeptr InsertAfter(Nodeptr first, int x, int y)
+{
 
-Nodeptr temp, prev;
-//search for y
-prev= first;
-while(prev){
-   if (prev->data == y)
-       break;
-    prev=prev->next;
-}
-if (prev==NULL){ //y not found
-    printf("%d Not .. returning", y);
+    Nodeptr temp, prev;
+    //search for y
+    prev = first;
+    while (prev)
+    {
+        if (prev->data == y)
+            break;
+        prev = prev->next;
+    }
+    if (prev == NULL)
+    { //y not found
+        printf("%d Not .. returning", y);
+        return first;
+    }
+
+    //y is found, insert x
+
+    temp = getnode();
+    temp->data = x;
+    temp->next = NULL;
+
+    temp->next = prev->next;
+    prev->next = temp;
+
     return first;
 }
 
-//y is found, insert x
+Nodeptr Reverse(Nodeptr first)
+{
+    Nodeptr p, q, r;
+    p = first;
+    q = NULL;
 
-temp = getnode();
-temp->data = x;
-temp->next = NULL;
-
-temp->next = prev->next;
-prev->next = temp;
-
-return first;
-}
-
-Nodeptr Reverse(Nodeptr first){
-    Nodeptr p,q,r;
-    p= first;
-    q=NULL;
-
-    while(p){
-        r=q;
-        q=p;
-        p=p->next;
+    while (p)
+    {
+        r = q;
+        q = p;
+        p = p->next;
         q->next = r;
     }
 
     return q;
-
 }
-int DeleteFront(Nodeptr *first){
+int DeleteFront(Nodeptr *first)
+{
     Nodeptr temp;
     int x;
 
-    if (*first==NULL){
+    if (*first == NULL)
+    {
         printf("Empty List\n");
-        return -999;//error
+        return -999; //error
     }
 
     temp = *first;
@@ -126,25 +140,28 @@ int DeleteFront(Nodeptr *first){
     *first = (*first)->next;
     free(temp);
     return x;
-//return first;
+    //return first;
 }
 
-int DeleteLast(Nodeptr *first){
+int DeleteLast(Nodeptr *first)
+{
     Nodeptr temp, prev;
     int x;
 
-    if (*first == NULL){
+    if (*first == NULL)
+    {
         printf("Empty List\n");
         return -999;
     }
 
     temp = *first;
     prev = NULL;
-    while(temp->next){
+    while (temp->next)
+    {
         prev = temp;
         temp = temp->next;
     }
-    if (prev == NULL )
+    if (prev == NULL)
         *first = NULL;
     else
         prev->next = NULL;
@@ -152,9 +169,9 @@ int DeleteLast(Nodeptr *first){
     x = temp->data;
     free(temp);
     return x;
-
 }
-Nodeptr Delete(Nodeptr first, int x){
+Nodeptr Delete(Nodeptr first, int x)
+{
     Nodeptr trail = NULL;
     Nodeptr temp = first;
 
@@ -164,35 +181,35 @@ Nodeptr Delete(Nodeptr first, int x){
         temp = temp->next;
     }
 
-    if (temp == NULL){
-        printf("%d Not found",x);
+    if (temp == NULL)
+    {
+        printf("%d Not found", x);
         return first;
     }
-    if (trail == NULL){
+    if (trail == NULL)
+    {
         first = first->next;
     }
-    else{
+    else
+    {
         trail->next = temp->next;
     }
     free(temp);
     return first;
-
-
 }
 int main()
 {
     Nodeptr first = NULL; //list is empty
 
+    first = InsertFront(first, 20);
 
-    first= InsertFront(first,20);
-
-    first= InsertFront(first,10);
+    first = InsertFront(first, 10);
 
     Display(first);
 
-    InsertLast(&first,30);
+    InsertLast(&first, 30);
 
-    InsertLast(&first,50);
+    InsertLast(&first, 50);
 
     Display(first);
 
@@ -206,11 +223,10 @@ int main()
     //printf("\nItem deleted from front = %d",x);
     Display(first);
     x = DeleteLast(&first);
-    printf("\nItem deleted from Last = %d",x);
+    printf("\nItem deleted from Last = %d", x);
     Display(first);
-    first = Delete(first,30);
+    first = Delete(first, 30);
     Display(first);
 
     return 0;
 }
-
